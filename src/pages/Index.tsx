@@ -1,15 +1,11 @@
 import HeroSection from "@/components/HeroSection";
-import DashboardSection from "@/components/DashboardSection";
-import CoachSection from "@/components/CoachSection";
-import IntegrationSection from "@/components/IntegrationSection";
+import Dashboard from "./Dashboard";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
-      <DashboardSection />
-      <CoachSection />
-      <IntegrationSection />
+      <Dashboard />
     </div>
   );
 };

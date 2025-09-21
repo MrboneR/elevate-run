@@ -1,19 +1,25 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import coachPersonalities from "@/assets/coach-personalities.jpg";
 import { MessageCircle, Users, Trophy, Heart, Smile, Target, Zap } from "lucide-react";
 
-const CoachSection = () => {
+interface CoachSectionProps {
+  onCoachSelect?: (style: 'supportive' | 'motivational' | 'analytical' | 'tough') => void;
+}
+
+const CoachSection = ({ onCoachSelect }: CoachSectionProps) => {
   const coaches = [
     {
-      id: "professional",
+      id: "analytical",
       name: "The Professional",
-      personality: "Serious & Data-Driven",
+      personality: "Analytical & Data-Driven",
       icon: Target,
       description: "Focuses on precise metrics, structured training, and evidence-based coaching",
       style: "gradient-performance",
-      sample: "Based on your HRV data, I recommend reducing tomorrow's intensity by 15%."
+      sample: "Based on your HRV data, I recommend reducing tomorrow's intensity by 15%.",
+      coachStyle: 'analytical' as const
     },
     {
       id: "supportive",
@@ -22,25 +28,28 @@ const CoachSection = () => {
       icon: Heart,
       description: "Provides emotional support, celebrates progress, and builds confidence",
       style: "gradient-recovery",
-      sample: "You've been so consistent this week! Let's build on that momentum together."
+      sample: "You've been so consistent this week! Let's build on that momentum together.",
+      coachStyle: 'supportive' as const
     },
     {
-      id: "tough-love",
+      id: "tough",
       name: "The Challenger",
-      personality: "Tough Love & Motivational",
+      personality: "Tough & Motivational",
       icon: Zap,
       description: "Pushes you harder, doesn't accept excuses, focuses on breakthrough performance",
       style: "gradient-achievement",
-      sample: "I know you can push harder. Your body is ready - let your mind catch up!"
+      sample: "I know you can push harder. Your body is ready - let your mind catch up!",
+      coachStyle: 'tough' as const
     },
     {
-      id: "playful",
+      id: "motivational",
       name: "The Enthusiast",
-      personality: "Playful & Fun",
+      personality: "Motivational & Fun",
       icon: Smile,
       description: "Makes training fun, uses gamification, keeps things light and enjoyable",
       style: "gradient-hero",
-      sample: "Time for another adventure! Let's see if we can beat yesterday's split time! 🚀"
+      sample: "Time for another adventure! Let's see if we can beat yesterday's split time! 🚀",
+      coachStyle: 'motivational' as const
     }
   ];
 
@@ -107,6 +116,7 @@ const CoachSection = () => {
                   variant="outline" 
                   size="sm" 
                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-quick"
+                  onClick={() => onCoachSelect?.(coach.coachStyle)}
                 >
                   Select Coach
                 </Button>
