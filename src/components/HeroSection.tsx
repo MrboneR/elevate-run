@@ -27,12 +27,14 @@ const HeroSection = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button variant="hero" size="xl" className="group">
-              <Play className="w-5 h-5 group-hover:scale-110 transition-quick" />
-              Start Training
+            <Button variant="hero" size="xl" className="group" asChild>
+              <a href="/auth">
+                <Play className="w-5 h-5 group-hover:scale-110 transition-quick" />
+                Start Training
+              </a>
             </Button>
-            <Button variant="outline" size="xl">
-              View Demo
+            <Button variant="outline" size="xl" asChild>
+              <a href="#demo">View Demo</a>
             </Button>
           </div>
 
