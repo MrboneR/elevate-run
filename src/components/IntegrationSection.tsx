@@ -14,8 +14,10 @@ import {
   Zap,
   Shield
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const IntegrationSection = () => {
+  const { t } = useLanguage();
   const wearables = [
     { name: "Garmin", status: "connected", icon: Watch, color: "text-success" },
     { name: "Apple Watch", status: "available", icon: Watch, color: "text-muted-foreground" },
@@ -34,9 +36,9 @@ const IntegrationSection = () => {
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Seamless Wearable Integration</h2>
+          <h2 className="text-4xl font-bold mb-4 text-foreground">{t('integration.title')}</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Connect your favorite devices and let AI analyze every aspect of your performance, recovery, and health for truly personalized coaching.
+            {t('integration.subtitle')}
           </p>
         </div>
 
@@ -46,7 +48,7 @@ const IntegrationSection = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Smartphone className="w-5 h-5 text-primary" />
-                Connected Devices
+                {t('integration.connectedDevices')}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -65,11 +67,11 @@ const IntegrationSection = () => {
                     {device.status === "connected" ? (
                       <Badge className="bg-success text-success-foreground">
                         <CheckCircle className="w-3 h-3 mr-1" />
-                        Connected
+                        {t('wearable.connected')}
                       </Badge>
                     ) : (
                       <Button variant="outline" size="sm">
-                        Connect
+                        {t('wearable.connect')}
                       </Button>
                     )}
                   </div>
@@ -93,7 +95,7 @@ const IntegrationSection = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Activity className="w-5 h-5 text-secondary" />
-                Data Quality Score
+                {t('integration.dataQuality')}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -138,9 +140,9 @@ const IntegrationSection = () => {
             <div className="gradient-performance w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
               <Heart className="w-6 h-6 text-primary-foreground" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">Real-time Monitoring</h3>
+            <h3 className="text-lg font-semibold mb-2">{t('integration.realTimeMonitoring')}</h3>
             <p className="text-sm text-muted-foreground">
-              Continuous heart rate, HRV, and stress tracking during training and recovery
+              {t('integration.realTimeDesc')}
             </p>
           </Card>
 
@@ -148,9 +150,9 @@ const IntegrationSection = () => {
             <div className="gradient-achievement w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
               <Utensils className="w-6 h-6 text-secondary-foreground" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">Nutrition Sync</h3>
+            <h3 className="text-lg font-semibold mb-2">{t('integration.nutritionSync')}</h3>
             <p className="text-sm text-muted-foreground">
-              AI-driven meal suggestions based on training load, race prep, and weight goals
+              {t('integration.nutritionDesc')}
             </p>
           </Card>
 
@@ -158,9 +160,9 @@ const IntegrationSection = () => {
             <div className="gradient-recovery w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
               <Moon className="w-6 h-6 text-accent-foreground" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">Sleep Optimization</h3>
+            <h3 className="text-lg font-semibold mb-2">{t('integration.sleepOptimization')}</h3>
             <p className="text-sm text-muted-foreground">
-              Training plans automatically adjust based on sleep quality and recovery metrics
+              {t('integration.sleepDesc')}
             </p>
           </Card>
         </div>

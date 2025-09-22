@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import coachPersonalities from "@/assets/coach-personalities.jpg";
 import { MessageCircle, Users, Trophy, Heart, Smile, Target, Zap } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CoachSectionProps {
   onCoachSelect?: (style: 'supportive' | 'motivational' | 'analytical' | 'tough') => void;
 }
 
 const CoachSection = ({ onCoachSelect }: CoachSectionProps) => {
+  const { t } = useLanguage();
   const coaches = [
     {
       id: "analytical",
@@ -59,7 +61,7 @@ const CoachSection = ({ onCoachSelect }: CoachSectionProps) => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 text-foreground">Meet Your AI Coaches</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Choose a coaching personality that motivates you best. Each coach adapts their communication style while delivering the same personalized training intelligence.
+            {t('coach.selectStyle')}
           </p>
         </div>
 
@@ -99,7 +101,7 @@ const CoachSection = ({ onCoachSelect }: CoachSectionProps) => {
                 </div>
                 <CardTitle className="text-xl">{coach.name}</CardTitle>
                 <Badge variant="outline" className="mx-auto">
-                  {coach.personality}
+                  {t(`coach.${coach.coachStyle}`)}
                 </Badge>
               </CardHeader>
               <CardContent className="text-center space-y-4">
@@ -118,7 +120,7 @@ const CoachSection = ({ onCoachSelect }: CoachSectionProps) => {
                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-quick"
                   onClick={() => onCoachSelect?.(coach.coachStyle)}
                 >
-                  Select Coach
+                  {t('coach.selectCoach')}
                 </Button>
               </CardContent>
             </Card>

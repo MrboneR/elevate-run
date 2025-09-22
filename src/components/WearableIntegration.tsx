@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface WearableDevice {
   id: string;
@@ -29,6 +30,7 @@ interface WearableDevice {
 const WearableIntegration = () => {
   const { user } = useAuth();
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [devices, setDevices] = useState<WearableDevice[]>([
     {
       id: 'garmin-1',
@@ -179,7 +181,7 @@ const WearableIntegration = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="w-5 h-5 text-primary" />
-            Connected Devices
+            {t('wearable.title')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -215,7 +217,7 @@ const WearableIntegration = () => {
                       </div>
                     )}
                     <Badge variant={device.connected ? "default" : "secondary"}>
-                      {device.connected ? "Connected" : "Disconnected"}
+                      {device.connected ? t('wearable.connected') : 'Disconnected'}
                     </Badge>
                     <Button
                       variant={device.connected ? "outline" : "default"}
@@ -225,7 +227,7 @@ const WearableIntegration = () => {
                         : handleConnect(device.id)
                       }
                     >
-                      {device.connected ? "Disconnect" : "Connect"}
+                      {device.connected ? 'Disconnect' : t('wearable.connect')}
                     </Button>
                   </div>
                 </div>
@@ -259,7 +261,7 @@ const WearableIntegration = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Heart className="w-5 h-5 text-primary" />
-            Data Quality
+            {t('integration.dataQuality')}
           </CardTitle>
         </CardHeader>
         <CardContent>

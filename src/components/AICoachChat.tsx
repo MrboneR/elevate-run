@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Message {
   id: string;
@@ -29,6 +30,7 @@ interface AICoachChatProps {
 const AICoachChat = ({ coachStyle }: AICoachChatProps) => {
   const { user } = useAuth();
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
@@ -131,10 +133,10 @@ const AICoachChat = ({ coachStyle }: AICoachChatProps) => {
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <MessageCircle className="w-5 h-5 text-primary" />
-            AI Coach Chat
+            {t('dashboard.aiCoach')}
           </div>
           <Badge variant="secondary" className="capitalize">
-            {coachStyle}
+            {t(`coach.${coachStyle}`)}
           </Badge>
         </CardTitle>
       </CardHeader>
@@ -199,7 +201,7 @@ const AICoachChat = ({ coachStyle }: AICoachChatProps) => {
         <div className="p-4 border-t">
           <div className="flex gap-2">
             <Input
-              placeholder="Ask your AI coach anything..."
+              placeholder={t('coach.chatPlaceholder')}
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}

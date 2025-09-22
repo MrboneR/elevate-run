@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useToast } from "@/components/ui/use-toast";
 import { useDashboard } from "@/hooks/useDashboard";
 import { useAuth } from "@/hooks/useAuth";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Calendar,
   Clock,
@@ -29,6 +30,7 @@ const DashboardSection = () => {
   const { user, signOut } = useAuth();
   const { todaysWorkout, recoveryData, weeklyProgress, loading, completeWorkout } = useDashboard();
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [isCompleteDialogOpen, setIsCompleteDialogOpen] = useState(false);
   const [workoutData, setWorkoutData] = useState({
     distance: '',
@@ -41,7 +43,7 @@ const DashboardSection = () => {
     const { error } = await signOut();
     if (error) {
       toast({
-        title: "Error",
+        title: t('auth.error'),
         description: "Failed to sign out. Please try again.",
         variant: "destructive",
       });
@@ -60,14 +62,14 @@ const DashboardSection = () => {
 
     if (error) {
       toast({
-        title: "Error",
+        title: t('auth.error'),
         description: "Failed to complete workout. Please try again.",
         variant: "destructive",
       });
     } else {
       toast({
-        title: "Workout Completed!",
-        description: "Great job on completing your workout!",
+        title: t('dashboard.workoutCompleted'),
+        description: t('dashboard.congratulations'),
       });
       setIsCompleteDialogOpen(false);
       setWorkoutData({ distance: '', duration: '', effortLevel: '5', notes: '' });
@@ -172,12 +174,12 @@ const DashboardSection = () => {
                       <DialogTrigger asChild>
                         <Button variant="performance" size="lg" className="w-full">
                           <Play className="w-5 h-5 mr-2" />
-                          Complete Workout
+                          {t('dashboard.completeWorkout')}
                         </Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-md">
                         <DialogHeader>
-                          <DialogTitle>Complete Workout</DialogTitle>
+                          <DialogTitle>{t('dashboard.completeWorkout')}</DialogTitle>
                         </DialogHeader>
                         <div className="space-y-4">
                           <div className="grid grid-cols-2 gap-4">

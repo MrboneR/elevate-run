@@ -3,9 +3,12 @@ import Dashboard from "./Dashboard";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Navigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Index = () => {
   const { user, loading } = useAuth();
+  const { t } = useLanguage();
   
   if (loading) {
     return (
@@ -24,9 +27,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-4 z-50 flex gap-2">
+        <LanguageSwitcher />
         <Button asChild>
-          <a href="/auth">Get Started</a>
+          <a href="/auth">{t('nav.getStarted')}</a>
         </Button>
       </div>
     </div>

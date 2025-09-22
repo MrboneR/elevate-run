@@ -8,11 +8,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import { Activity } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const AuthPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const handleSignUp = async (email: string, password: string) => {
     setIsLoading(true);
@@ -26,13 +29,13 @@ const AuthPage = () => {
 
     if (error) {
       toast({
-        title: "Sign Up Error",
+        title: t('auth.error'),
         description: error.message,
         variant: "destructive",
       });
     } else {
       toast({
-        title: "Success",
+        title: t('auth.success'),
         description: "Check your email to verify your account",
       });
     }
@@ -48,7 +51,7 @@ const AuthPage = () => {
 
     if (error) {
       toast({
-        title: "Sign In Error",
+        title: t('auth.error'),
         description: error.message,
         variant: "destructive",
       });
@@ -60,22 +63,25 @@ const AuthPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-athletic flex items-center justify-center p-4">
+      <div className="fixed top-4 right-4 z-50">
+        <LanguageSwitcher />
+      </div>
       <Card className="w-full max-w-md bg-card/95 backdrop-blur-sm border-border">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Activity className="w-8 h-8 text-primary" />
             <h1 className="text-3xl font-bold text-foreground">RunAI</h1>
           </div>
-          <CardTitle>Welcome to RunAI</CardTitle>
+          <CardTitle>{t('auth.title')}</CardTitle>
           <CardDescription>
-            Your AI-powered running coach
+            {t('auth.subtitle')}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="signin" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="signin">Sign In</TabsTrigger>
-              <TabsTrigger value="signup">Sign Up</TabsTrigger>
+              <TabsTrigger value="signin">{t('auth.signIn')}</TabsTrigger>
+              <TabsTrigger value="signup">{t('auth.signUp')}</TabsTrigger>
             </TabsList>
             
             <TabsContent value="signin">
@@ -109,6 +115,7 @@ interface AuthFormProps {
 const AuthForm = ({ type, onSubmit, isLoading }: AuthFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -118,7 +125,7 @@ const AuthForm = ({ type, onSubmit, isLoading }: AuthFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">{t('auth.email')}</Label>
         <Input
           id="email"
           type="email"
@@ -129,7 +136,7 @@ const AuthForm = ({ type, onSubmit, isLoading }: AuthFormProps) => {
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password">{t('auth.password')}</Label>
         <Input
           id="password"
           type="password"
@@ -145,7 +152,7 @@ const AuthForm = ({ type, onSubmit, isLoading }: AuthFormProps) => {
         className="w-full"
         disabled={isLoading}
       >
-        {isLoading ? "Loading..." : type === "signin" ? "Sign In" : "Sign Up"}
+        {isLoading ? t('auth.loading') : type === "signin" ? t('auth.signInButton') : t('auth.signUpButton')}
       </Button>
     </form>
   );
