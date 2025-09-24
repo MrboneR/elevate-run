@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 import { Activity } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import OnboardingQuiz from "@/components/OnboardingQuiz";
 
 const AuthPage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
   const { t } = useLanguage();
@@ -34,10 +36,8 @@ const AuthPage = () => {
         variant: "destructive",
       });
     } else {
-      toast({
-        title: t('auth.success'),
-        description: "Check your email to verify your account",
-      });
+      // Show onboarding quiz after successful signup
+      setShowOnboarding(true);
     }
     setIsLoading(false);
   };
@@ -60,6 +60,15 @@ const AuthPage = () => {
     }
     setIsLoading(false);
   };
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+    navigate("/");
+  };
+
+  if (showOnboarding) {
+    return <OnboardingQuiz onComplete={handleOnboardingComplete} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-athletic flex items-center justify-center p-4">

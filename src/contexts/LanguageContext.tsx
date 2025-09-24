@@ -91,6 +91,61 @@ export const translations = {
     'notFound.title': '404',
     'notFound.message': 'Oops! Page not found',
     'notFound.returnHome': 'Return to Home',
+    onboarding: {
+      title: "Welcome to RunAI",
+      subtitle: "Let's personalize your training experience",
+      experienceTitle: "What's your running experience?",
+      experienceDescription: "This helps us create the perfect training plan for you.",
+      goalTitle: "What's your main running goal?",
+      goalDescription: "Choose what you're training for.",
+      weeklyTitle: "How much time can you dedicate?",
+      weeklyDescription: "How many hours per week do you want to train?",
+      coachTitle: "Choose your coaching style",
+      coachDescription: "What kind of motivation works best for you?",
+      experience: {
+        beginner: "Beginner",
+        intermediate: "Intermediate", 
+        advanced: "Advanced",
+        professional: "Professional"
+      },
+      experienceDesc: {
+        beginner: "New to running or less than 6 months",
+        intermediate: "6 months to 2 years of regular running",
+        advanced: "2+ years with competitive experience", 
+        professional: "Elite level with professional training"
+      },
+      goal: {
+        fitness: "General Fitness",
+        "5k": "5K Race",
+        "10k": "10K Race",
+        half_marathon: "Half Marathon",
+        marathon: "Marathon",
+        ultra: "Ultra Marathon"
+      },
+      coach: {
+        supportive: "Supportive & Encouraging",
+        motivational: "High Energy & Motivational",
+        analytical: "Data-Driven & Analytical",
+        tough: "Tough Love & Discipline"
+      },
+      coachDesc: {
+        supportive: "Gentle guidance with positive reinforcement",
+        motivational: "Energetic motivation to push your limits",
+        analytical: "Focus on metrics and scientific approach",
+        tough: "Direct feedback and challenging targets"
+      },
+      hoursPerWeek: "hours/week",
+      hour: "hour",
+      hours: "hours",
+      selectHours: "Select training hours per week",
+      back: "Back",
+      next: "Next",
+      complete: "Complete Setup",
+      completing: "Setting up...",
+      success: "Profile completed!",
+      successDescription: "Your personalized training plan is ready.",
+      error: "Setup Error"
+    }
   },
   lv: {
     // Hero Section
@@ -172,6 +227,62 @@ export const translations = {
     'notFound.title': '404',
     'notFound.message': 'Ups! Lapa nav atrasta',
     'notFound.returnHome': 'Atgriezties Sākumlapā',
+    
+    onboarding: {
+      title: "Laipni lūdzam RunAI",
+      subtitle: "Personalizēsim jūsu treniņu pieredzi",
+      experienceTitle: "Kāda ir jūsu skrējiena pieredze?",
+      experienceDescription: "Tas palīdz mums izveidot ideālu treniņu plānu.",
+      goalTitle: "Kāds ir jūsu galvenais skrējiena mērķis?",
+      goalDescription: "Izvēlieties, kam gatavojaties.",
+      weeklyTitle: "Cik daudz laika varat veltīt?",
+      weeklyDescription: "Cik stundu nedēļā vēlaties trenēties?",
+      coachTitle: "Izvēlieties trenera stilu",
+      coachDescription: "Kāda veida motivācija jums darbojas vislabāk?",
+      experience: {
+        beginner: "Iesācējs",
+        intermediate: "Vidējs līmenis",
+        advanced: "Augstākais līmenis",
+        professional: "Profesionālis"
+      },
+      experienceDesc: {
+        beginner: "Jauns skrējienos vai mazāk par 6 mēnešiem",
+        intermediate: "6 mēneši līdz 2 gadi regulāru skrējienu",
+        advanced: "2+ gadi ar sacensību pieredzi",
+        professional: "Elites līmenis ar profesionālu trenēšanos"
+      },
+      goal: {
+        fitness: "Vispārējā fiziskā sagatavotība",
+        "5k": "5K sacensības",
+        "10k": "10K sacensības",
+        half_marathon: "Pusmaratons",
+        marathon: "Maratons",
+        ultra: "Ultramaratons"
+      },
+      coach: {
+        supportive: "Atbalstošs un iedrošinošs",
+        motivational: "Augsta enerģija un motivējošs",
+        analytical: "Datu vadīts un analītisks",
+        tough: "Stingra pieeja un disciplīna"
+      },
+      coachDesc: {
+        supportive: "Maigs vadījums ar pozitīvu atbalstu",
+        motivational: "Enerģiska motivācija robežu pārvarēšanai",
+        analytical: "Fokuss uz metriku un zinātnisko pieeju",
+        tough: "Tiešs atgriezeniskais sakars un izaicinoši mērķi"
+      },
+      hoursPerWeek: "stundas/nedēļā",
+      hour: "stunda", 
+      hours: "stundas",
+      selectHours: "Izvēlieties treniņu stundas nedēļā",
+      back: "Atpakaļ",
+      next: "Tālāk",
+      complete: "Pabeigt iestatīšanu",
+      completing: "Iestata...",
+      success: "Profils pabeigts!",
+      successDescription: "Jūsu personalizētais treniņu plāns ir gatavs.",
+      error: "Iestatīšanas kļūda"
+    }
   },
 };
 
