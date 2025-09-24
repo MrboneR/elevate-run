@@ -7,6 +7,7 @@ import WearableIntegration from "@/components/WearableIntegration";
 import AICoachChat from "@/components/AICoachChat";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Activity, MessageCircle, Watch, BarChart3 } from "lucide-react";
+import TrainingPlanDisplay from "@/components/TrainingPlanDisplay";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Dashboard = () => {
@@ -57,7 +58,7 @@ const Dashboard = () => {
           </TabsContent>
 
           <TabsContent value="training">
-            <IntegrationSection />
+            <TrainingPlanDisplay />
           </TabsContent>
         </Tabs>
       </div>

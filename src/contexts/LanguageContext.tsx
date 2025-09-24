@@ -92,8 +92,8 @@ export const translations = {
     'notFound.message': 'Oops! Page not found',
     'notFound.returnHome': 'Return to Home',
     onboarding: {
-      title: "Welcome to RunAI",
-      subtitle: "Let's personalize your training experience",
+      title: "RunAI Assessment", 
+      subtitle: "Complete your personalized running assessment to create your perfect training plan",
       experienceTitle: "What's your running experience?",
       experienceDescription: "This helps us create the perfect training plan for you.",
       goalTitle: "What's your main running goal?",
@@ -142,8 +142,9 @@ export const translations = {
       next: "Next",
       complete: "Complete Setup",
       completing: "Setting up...",
-      success: "Profile completed!",
-      successDescription: "Your personalized training plan is ready.",
+      success: "Assessment completed!",
+      successDescription: "Your profile has been updated successfully.",
+      planGenerated: "Your personalized 4-week training plan has been created!",
       error: "Setup Error"
     }
   },
@@ -229,8 +230,8 @@ export const translations = {
     'notFound.returnHome': 'Atgriezties Sākumlapā',
     
     onboarding: {
-      title: "Laipni lūdzam RunAI",
-      subtitle: "Personalizēsim jūsu treniņu pieredzi",
+      title: "RunAI Novērtējums",
+      subtitle: "Pabeidziet savu personalizēto skrējiena novērtējumu, lai izveidotu savu ideālo treniņu plānu",
       experienceTitle: "Kāda ir jūsu skrējiena pieredze?",
       experienceDescription: "Tas palīdz mums izveidot ideālu treniņu plānu.",
       goalTitle: "Kāds ir jūsu galvenais skrējiena mērķis?",
@@ -279,8 +280,9 @@ export const translations = {
       next: "Tālāk",
       complete: "Pabeigt iestatīšanu",
       completing: "Iestata...",
-      success: "Profils pabeigts!",
-      successDescription: "Jūsu personalizētais treniņu plāns ir gatavs.",
+      success: "Novērtējums pabeigts!",
+      successDescription: "Jūsu profils ir veiksmīgi atjaunināts.",
+      planGenerated: "Jūsu personalizētais 4 nedēļu treniņu plāns ir izveidots!",
       error: "Iestatīšanas kļūda"
     }
   },

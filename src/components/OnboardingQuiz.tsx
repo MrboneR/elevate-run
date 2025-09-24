@@ -42,23 +42,41 @@ const OnboardingQuiz = ({ onComplete }: OnboardingQuizProps) => {
   const handleSubmit = async () => {
     setIsLoading(true);
     
-    const { error } = await supabase
-      .from('profiles')
-      .update(quizData)
-      .eq('user_id', (await supabase.auth.getUser()).data.user?.id);
+    try {
+      // Update profile with quiz data
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .update(quizData)
+        .eq('user_id', (await supabase.auth.getUser()).data.user?.id);
 
-    if (error) {
+      if (profileError) {
+        throw profileError;
+      }
+
+      // Generate personalized training plan
+      const { data: planResult, error: planError } = await supabase.functions.invoke('generate-training-plan');
+
+      if (planError) {
+        console.error('Plan generation error:', planError);
+        throw new Error('Failed to generate training plan');
+      }
+
+      if (!planResult.success) {
+        throw new Error(planResult.error || 'Failed to generate training plan');
+      }
+
+      toast({
+        title: t('onboarding.success'),
+        description: t('onboarding.planGenerated'),
+      });
+      onComplete();
+    } catch (error) {
+      console.error('Onboarding error:', error);
       toast({
         title: t('onboarding.error'),
         description: error.message,
         variant: "destructive",
       });
-    } else {
-      toast({
-        title: t('onboarding.success'),
-        description: t('onboarding.successDescription'),
-      });
-      onComplete();
     }
     setIsLoading(false);
   };
